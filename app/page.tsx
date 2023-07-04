@@ -7,5 +7,5 @@ export default async function Home() {
   const db = client.db("forum");
   const result = await db.collection("post").find().toArray();
   console.log(result)
-  return <div>게시판이다</div>;
+  return <div>게시판이다!!</div>;
 }
