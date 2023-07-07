@@ -1,4 +1,4 @@
-body{
+body {
   margin: 0;
 }
 
@@ -20,8 +20,8 @@ body{
 }
 .list-item p {
   color: grey;
-  margin : 5px 0px;
-} 
+  margin: 5px 0px;
+}
 
 .p-20 {
   padding: 20px;
@@ -37,4 +37,20 @@ button {
   background: lightgray;
   border: none;
   border-radius: 5px;
+}
+a {
+  text-decoration: none;
+  color: black;
+}
+.navbar {
+  background: white;
+  padding: 20px;
+}
+.navbar a {
+  margin-right: 10px;
+  text-decoration: none;
+  color: black;
+}
+.logo {
+  font-weight: bold;
 } 
