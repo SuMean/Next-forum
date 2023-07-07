@@ -1,4 +1,4 @@
-export default function handler(요청, 응답) {
-    let date = new Date()
+export default function handler(요청: any, 응답: any) {
+  let date = new Date();
   응답.status(200).json(date);
 }
