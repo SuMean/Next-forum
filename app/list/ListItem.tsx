@@ -2,18 +2,27 @@
 
 import Link from "next/link";
 
-export default function ListItem({result}:any) {
+export default function ListItem({ result }: any) {
   return (
     <div>
-      {result.map((a: any, i: number) => (
+      {result.map((item: any, i: number) => (
         <div className="list-item" key={i}>
-          <Link href={"/detail/" + result[i]._id}>
-            <h4>{result[i].title}</h4>
+          <Link href={"/detail/" + item._id}>
+            <h4>{item.title}</h4>
           </Link>
-          <Link href={"/edit/" + result[i]._id} className="list-btn">
+          <Link href={"/edit/" + item._id} className="list-btn">
             ✏️
           </Link>
-          <span>🗑️</span>
+          <button
+            onClick={() => {
+              fetch("/api/post/delete", {
+                method: "POST",
+                body: item._id,
+              });
+            }}
+          >
+            🗑️
+          </button>
           <p>1월 1일</p>
         </div>
       ))}
