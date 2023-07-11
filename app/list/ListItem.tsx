@@ -13,16 +13,23 @@ export default function ListItem({ result }: any) {
           <Link href={"/edit/" + item._id} className="list-btn">
             ✏️
           </Link>
-          <button
-            onClick={() => {
+          <span
+            onClick={(e) => {
               fetch("/api/post/delete", {
                 method: "POST",
                 body: item._id,
-              });
+              })
+                .then((r) => r.json())
+                .then(() => {
+                   e.target.parentElement.style.opacity = 0;
+                   setTimeout(() => {
+                     e.target.parentElement.style.display = "none";
+                   }, 1000);
+                });
             }}
           >
             🗑️
-          </button>
+          </span>
           <p>1월 1일</p>
         </div>
       ))}
