@@ -2,10 +2,18 @@
 
 import Link from "next/link";
 
-export default function ListItem({ result }: any) {
+interface Item {
+  _id: string;
+  title: string;
+}
+interface ListItemProps {
+  result: Item[];
+}
+
+export default function ListItem({ result }: ListItemProps) {
   return (
     <div>
-      {result.map((item: any, i: number) => (
+      {result.map((item, i: number) => (
         <div className="list-item" key={i}>
           <Link href={"/detail/" + item._id}>
             <h4>{item.title}</h4>
@@ -14,17 +22,17 @@ export default function ListItem({ result }: any) {
             ✏️
           </Link>
           <span
-            onClick={(e) => {
+            onClick={(e: React.MouseEvent<HTMLSpanElement>) => {
               fetch("/api/post/delete", {
                 method: "POST",
                 body: item._id,
               })
                 .then((r) => r.json())
                 .then(() => {
-                   e.target.parentElement.style.opacity = 0;
-                   setTimeout(() => {
-                     e.target.parentElement.style.display = "none";
-                   }, 1000);
+                 e.currentTarget.parentElement!.style.opacity = "0";
+                 setTimeout(() => {
+                   e.currentTarget.parentElement!.style.display = "none";
+                 }, 1000);
                 });
             }}
           >
