@@ -2,42 +2,46 @@
 
 import Link from "next/link";
 
-interface Item {
-  _id: string;
-  title: string;
-}
-interface ListItemProps {
-  result: Item[];
-}
+// interface Item {
+//   _id: string;
+//   title: string;
+// }
+// interface ListItemProps {
+//   result: Item[];
+// }
 
-export default function ListItem({ result }: ListItemProps) {
+export default function ListItem({ result }: any) {
   return (
     <div>
-      {result.map((item, i: number) => (
+      {result.map((a: any, i: number) => (
         <div className="list-item" key={i}>
-          <Link href={"/detail/" + item._id}>
-            <h4>{item.title}</h4>
+          <Link href={"/detail/" + result[i]._id}>
+            <h4>{result[i].title}</h4>
           </Link>
-          <Link href={"/edit/" + item._id} className="list-btn">
+          <Link href={"/edit/" + result[i]._id} className="list-btn">
             ✏️
           </Link>
           <span
             onClick={(e: React.MouseEvent<HTMLSpanElement>) => {
+              const parent = e.currentTarget.parentElement;
               fetch("/api/post/delete", {
                 method: "POST",
-                body: item._id,
-              })
-                .then((r) => r.json())
-                .then(() => {
-                 e.currentTarget.parentElement!.style.opacity = "0";
-                 setTimeout(() => {
-                   e.currentTarget.parentElement!.style.display = "none";
-                 }, 1000);
-                });
+                body: result[i]._id,
+              });
+
+              if (parent) {
+                parent.style.opacity = "0";
+                setTimeout(() => {
+                  if (parent) {
+                    parent.style.display = "none";
+                  }
+                }, 1000);
+              }
             }}
           >
             🗑️
           </span>
+
           <p>1월 1일</p>
         </div>
       ))}

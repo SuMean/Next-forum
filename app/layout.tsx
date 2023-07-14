@@ -22,6 +22,7 @@ export default function RootLayout({
             Appleforum
           </Link>
           <Link href="/list">List</Link>
+          <Link href="/write">write</Link>
         </div>{" "}
         {children}
       </body>
