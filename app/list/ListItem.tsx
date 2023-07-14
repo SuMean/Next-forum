@@ -2,13 +2,6 @@
 
 import Link from "next/link";
 
-// interface Item {
-//   _id: string;
-//   title: string;
-// }
-// interface ListItemProps {
-//   result: Item[];
-// }
 
 export default function ListItem({ result }: any) {
   return (
@@ -41,7 +34,6 @@ export default function ListItem({ result }: any) {
           >
             🗑️
           </span>
-
           <p>1월 1일</p>
         </div>
       ))}
