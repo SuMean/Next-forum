@@ -16,7 +16,7 @@ export default function ListItem({ result }: any) {
           <span
             onClick={(e: React.MouseEvent<HTMLSpanElement>) => {
               const parent = e.currentTarget.parentElement;
-              fetch("/api/delete/listitnem");
+              fetch(`/api/delete/delete?id=${result[i]._id}`, {});
 
               if (parent) {
                 parent.style.opacity = "0";

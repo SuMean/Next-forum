@@ -1,7 +1,7 @@
 import { MongoClient } from "mongodb";
 declare const global: any;
 const url =
-  "mongodb+srv://admin:@cluster0.azzwzth.mongodb.net/?retryWrites=true&w=majority";
+  "mongodb+srv://admin:!@cluster0.azzwzth.mongodb.net/?retryWrites=true&w=majority";
 
 let connectDB: Promise<MongoClient>;
 
