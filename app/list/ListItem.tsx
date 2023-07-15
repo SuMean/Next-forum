@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 
-
 export default function ListItem({ result }: any) {
   return (
     <div>
@@ -17,10 +16,7 @@ export default function ListItem({ result }: any) {
           <span
             onClick={(e: React.MouseEvent<HTMLSpanElement>) => {
               const parent = e.currentTarget.parentElement;
-              fetch("/api/post/delete", {
-                method: "POST",
-                body: result[i]._id,
-              });
+              fetch("/api/delete/listitnem");
 
               if (parent) {
                 parent.style.opacity = "0";
