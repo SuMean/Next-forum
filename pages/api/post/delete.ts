@@ -11,3 +11,8 @@ export default async function handler(요청: any, 응답: any) {
     응답.status(200).json("삭제완료");
   }
 }
+
+
+
+
+
