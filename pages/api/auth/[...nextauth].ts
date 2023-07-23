@@ -8,12 +8,10 @@ import { JWT } from "next-auth/jwt";
 import { Session } from "next-auth";
 import { SessionStrategy } from "next-auth";
 
-
 interface User {
   name: string;
   email: string;
 }
-
 
 interface ExtendedJWT extends JWT {
   user?: User;
@@ -57,7 +55,7 @@ export const authOptions = {
           id: user._id.toString(), //objectid를 문자열로 변형
           name: user.name,
           email: user.email,
-          image: user.image,
+          password: user.password,
         };
 
         return userObject;
@@ -93,7 +91,7 @@ export const authOptions = {
     },
   },
 
-  secret: "qwe123!!",
   adapter: MongoDBAdapter(connectDB),
+  secret: process.env.NEXTAUTH_SECRET,
 };
 export default NextAuth(authOptions);
