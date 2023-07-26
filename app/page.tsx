@@ -4,5 +4,5 @@ export default async function Home() {
   let db = (await connectDB).db("forum");
   let result = await db.collection("post").find().toArray();
   console.log(result);
-  return <div>게시판이다!!</div>;
+  return <div>메인페이지</div>;
 }
