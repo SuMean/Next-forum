@@ -51,14 +51,14 @@ export const authOptions = {
           console.log("비번틀림");
           return null;
         }
-        let userObject = {
+        let userAuth= {
           id: user._id.toString(), //objectid를 문자열로 변형
           name: user.name,
           email: user.email,
           password: user.password,
         };
 
-        return userObject;
+        return userAuth;
       },
     }),
   ],
