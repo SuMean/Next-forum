@@ -5,6 +5,8 @@ import LoginBtn from "./LoginBtn";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/pages/api/auth/[...nextauth]";
 import { LogOutBtn } from "./LogoutBtn";
+import { cookies } from "next/headers";
+import DarkMode from "./DarkMode";
 Link;
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,7 +21,8 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
   let session = await getServerSession(authOptions);
-  console.log(session);
+  let res = cookies().get("name");
+  console.log(res);
   return (
     <html lang="en">
       <body>
@@ -37,6 +40,7 @@ export default async function RootLayout({
           ) : (
             <LoginBtn />
           )}
+          <DarkMode />
         </div>{" "}
         {children}
       </body>
