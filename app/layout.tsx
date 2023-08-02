@@ -21,11 +21,13 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
   let session = await getServerSession(authOptions);
-  let res = cookies().get("name");
-  console.log(res);
+  let res = cookies().get("mode");
+  console.log(res?.value);
   return (
     <html lang="en">
-      <body>
+      <body
+        className={res != undefined && res.value == "dark" ? "dark-mode" : ""}
+      >
         <div className="navbar">
           <Link href="/" className="logo">
             Appleforum
