@@ -30,7 +30,7 @@ export default async function RootLayout({
       >
         <div className="navbar">
           <Link href="/" className="logo">
-            Appleforum
+            FORUM
           </Link>
           <Link href="/list">List</Link>
           <Link href="/write">write</Link>

@@ -1,10 +1,11 @@
 import { connectDB } from "@/util/database";
 import { ObjectId } from "mongodb";
-export default async function handler(요청: any, 응답: any) {
+import { NextApiRequest, NextApiResponse } from "next";
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   let db = (await connectDB).db("forum");
   let result = await db
     .collection("comment")
-    .find({ parent: new ObjectId(요청.query.id) })
+    .find({ parent: new ObjectId(req.query.id as string) })
     .toArray();
-  응답.status(200).json(result);
+  res.status(200).json(result);
 }
