@@ -1,12 +1,12 @@
 import { connectDB } from "@/util/database";
 import bcrypt from "bcrypt";
-
-export default async function handler(요청: any, 응답: any) {
-  if (요청.method == "POST") {
-    let hash = await bcrypt.hash(요청.body.password, 10);
-    요청.body.password = hash;
+import { NextApiRequest, NextApiResponse } from "next";
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+  if (req.method == "POST") {
+    let hash = await bcrypt.hash(req.body.password, 10);
+   req.body.password = hash;
     let db = (await connectDB).db("forum");
-     await db.collection("user_cred").insertOne(요청.body);
-    응답.status(200).json('가입성공');
+    await db.collection("user_cred").insertOne(req.body);
+    res.status(200).json("가입성공");
   }
 }
