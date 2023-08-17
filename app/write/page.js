@@ -16,7 +16,7 @@ export default async function Write() {
           onChange={async (e) => {
             let file = e.target.files[0];
             let filename = encodeURIComponent(file.name);
-            let res = await fetch("/api/post/image?file=" + filename);
+            let res = await fetch(`/api/post/image?file= ${filename}`);
             res = await res.json();
 
             //S3 업로드
