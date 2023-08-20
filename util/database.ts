@@ -1,7 +1,11 @@
 import { MongoClient } from "mongodb";
+import { config } from "dotenv";
 declare const global: any;
-const url =
-  "mongodb+srv://admin:@cluster0.azzwzth.mongodb.net/?retryWrites=true&w=majority";
+config();
+const url = process.env.MONGO_URL;
+if (!url) {
+  throw new Error("MONGO_URL is not defined in the environment variables.");
+}
 
 let connectDB: Promise<MongoClient>;
 
