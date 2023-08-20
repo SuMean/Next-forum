@@ -9,7 +9,7 @@ export default function LoginBtn() {
         signIn();
       }}
     >
-      로그인
+      LOGIN
     </button>
   );
 } 

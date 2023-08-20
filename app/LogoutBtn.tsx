@@ -9,7 +9,7 @@ export function LogOutBtn() {
         signOut();
       }}
     >
-      로그아웃
+    LOGOUT
     </button>
   );
 }
