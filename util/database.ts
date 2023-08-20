@@ -2,7 +2,7 @@ import { MongoClient } from "mongodb";
 import { config } from "dotenv";
 declare const global: any;
 config();
-const url = process.env.MONGO_URL;
+const url = process.env.Mongo_URL;
 if (!url) {
   throw new Error("MONGO_URL is not defined in the environment variables.");
 }
